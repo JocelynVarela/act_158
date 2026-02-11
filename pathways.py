@@ -36,6 +36,7 @@ def pathway2_result(lit, al, bio, grade, pass_l, pass_a, pass_b, combo,  basic_l
 
     if lit >= pass_l or al >= pass_a or bio >= pass_b:
         pro1 = True
+        
 
     if lit >= basic_l and al >= basic_a and bio >= basic_b:
         no_bb = True
@@ -45,6 +46,11 @@ def pathway2_result(lit, al, bio, grade, pass_l, pass_a, pass_b, combo,  basic_l
 
     if pro1 and no_bb and combo_score:
         result.append("You meet all the requirments for Pathway 2")
+        return result
+
+    if grade == 12:
+         result.append(" Since you're in 12 grade, you can no longer improve your keystone scores. Please check another pathway.")
+         return result
 
     if not pro1:
         list = [bio , lit, al]
@@ -52,6 +58,35 @@ def pathway2_result(lit, al, bio, grade, pass_l, pass_a, pass_b, combo,  basic_l
         if list[-1] == bio:
             result.append("You need at least one proficient keystone ")
             result.append("You are closest to proficient in biology you need " + str(pass_b - bio) + " more points")
+
+        if list[-1] == lit:
+            result.append("You need at least one proficient keystone ")
+            result.append("You are closest to proficient in literature you need " + str(pass_l - lit) + " more points")
+
+        if list[-1] == al:
+            result.append("You need at least one proficient keystone ")
+            result.append("You are closest to proficient in algebra you need " + str(pass_a - al) + " more points.")
+
+    if lit < basic_l:
+        result.append(" Your literature score is below basic, You need " + str(basic_l - lit) + " more points. ")
+
+    if bio < basic_b:
+        result.append(" Your biology score is below basic, You need " + str(basic_b - bio) + " more points. ")
+
+    if al < basic_a:
+        result.append(" Your algebra score is below basic, You need " + str(basic_a - al) + " more points. ")
+
+
+    if not combo_score:
+        result.append(" Your combined score needs to be " + str(combo) + ". You need " + str(combo - (lit + bio + al)) + " more points.")
+
+    return result
+
+print (pathway2_result(1409, 1390, 1480, 11, 1500, 1500, 1500, 4452, 1444 , 1439, 1460 ))
+
+
+
+
 
             
     
