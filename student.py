@@ -6,6 +6,7 @@ class Student:
         self.bio_score = 0
         self.grade = 0
         self.cte = False
+        self.cert = False 
         self.result1 = ["Please go enter your information to get pathway 1 results."]
         self.result2 = ["Please go enter your information to get pathway 2 results."]
         self.result3 = ["Please go enter your information to get pathway 3 results."]

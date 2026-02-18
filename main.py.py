@@ -80,10 +80,13 @@ def create_info_screen(container):
         grade = grade_entry.get()
         s1.grade = int(grade)
         cte = check_cte.get()
-        print(cte)
         cert = check_cert.get()
-        print(cert)
-        print(grade)
+        if cte:
+            s1.cte = True
+        if cert:
+            s1.cert = True
+        
+        
         
         s1.result1 = pathways.pathway1_result(s1.lit_score, s1.al_score, s1.bio_score, s1.grade, pass_l, pass_a, pass_b)
         global path1_screen
@@ -93,6 +96,11 @@ def create_info_screen(container):
         s1.result2 = pathways.pathway2_result(s1.lit_score, s1.al_score, s1.bio_score, s1.grade, pass_l, pass_a, pass_b, combo,  basic_l, basic_a, basic_b )
         global path2_screen
         path2_screen = create_path2_screen(main_container)
+
+        #This is calling pathway 3 and setting the result
+        s1.result3 = pathways.pathway3_result( s1.cte , s1.cert, s1.grade , )
+        global path3_screen
+        path3_screen = create_path3_screen(main_container)        
         
     frame = tk.Frame(container, bg="lightgrey")
     frame.grid(row=0, column=0, sticky="nsew")
@@ -203,6 +211,15 @@ def create_path3_screen(container):
 
     path3_title = tk.Label(frame, text="Pathway 3", font=("Times New Roman", 18), bg="#FADDC0")
     path3_title.pack(pady=50)
+
+    display_area_3 = scrolledtext.ScrolledText(frame, width=50, height=15, wrap=tk.WORD)
+    display_area_3.pack(padx=10, pady=10)
+    path3_txt = ""
+    for i in range(len(s1.result3)):
+        path3_txt += s1.result3[i] +"\n"
+        
+    long_content = path3_txt
+    display_area_3.insert(tk.INSERT, long_content)
     return frame
 
 def create_path4_screen(container):

@@ -82,9 +82,40 @@ def pathway2_result(lit, al, bio, grade, pass_l, pass_a, pass_b, combo,  basic_l
 
     return result
 
-print (pathway2_result(1409, 1390, 1480, 11, 1500, 1500, 1500, 4452, 1444 , 1439, 1460 ))
+#print (pathway2_result(1409, 1390, 1480, 11, 1500, 1500, 1500, 4452, 1444 , 1439, 1460 ))
 
 
+def pathway3_result(cte, cert, grade):
+    result = []
+    if (grade == 11 or grade == 12) and not cte:
+        result.append(" You can no longer enroll in a CTE program, this pathway is closed. ")
+        return result
+    if cte and cert:
+        result.append(" Since you are in a CTE Program and earned an industry certification you qualify for this pathway.")
+
+    if cte and not cert:
+        result.append(" You have not recieved an industry certification yet, you will need one in order to complete this pathway.")
+
+    if not cte and cert:
+        result.append(" You are not in a CTE program but have earned a industry certification, therefore you should check pathway 5.")
+
+
+    if (grade == 9 or grade == 10) and not cte :
+        result.append(" If you are in 9th or 10th grade and will like to join a CTE program talk to your counselor about opportunities in your district.")
+    return result
+
+print(pathway3_result( True, False , 10))
+
+    
+
+    
+
+    
+        
+        
+        
+    
+    
 
 
 
