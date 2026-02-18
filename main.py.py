@@ -142,11 +142,15 @@ def create_info_screen(container):
     cert_checkbox = tk.Checkbutton(frame, text=" Have you earned an industry certification?  ", variable=check_cert)
     cert_checkbox.pack(anchor='w', padx=10, pady=5)
     #Any AP entry
-    ap_entry = tk.Entry(frame)
-    ap_label = tk.Label(frame, text="Any AP course scores?",  font = ("Times New Roman", 9))
+    check_ap = tk.IntVar()
+    ap_checkbox = tk.Checkbutton(frame, text=" Have you passed any AP course exam?  ", variable=check_cert)
+    ap_checkbox.pack(anchor='w', padx=10, pady=5)
 
-    ap_label.pack(anchor='w', padx=10, pady=5)
-    ap_entry.pack(anchor='w', padx=10, pady=5)
+    #PSAT entry
+    psat_entry = tk.Entry(frame)
+    psat_label = tk.Label(frame, text="PSAT scores?",  font = ("Times New Roman", 9))
+    psat_label.pack(anchor='w', padx=10, pady=5)
+    psat_entry.pack(anchor='w', padx=10, pady=5)
     #SAT entry
     sat_entry = tk.Entry(frame)
     sat_label = tk.Label(frame, text="SAT scores?",  font = ("Times New Roman", 9))
